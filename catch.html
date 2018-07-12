@@ -1,1 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>浏览器缓存</title>
+</head>
+<body>
+<div class="hi-blog-personal-detail-leftpanel" data-reactid=".179uv29cnds.0.1.1.0">
+    <div data-reactid=".179uv29cnds.0.1.1.0.0">
+        <div class="hi-blog-personal-detail-title" data-reactid=".179uv29cnds.0.1.1.0.0.0">
+            <h3 class="hi-blog-personal-detail-title-cont" data-reactid=".179uv29cnds.0.1.1.0.0.0.0"><span
+                    class="hi-blog-personal-detail-btns" data-reactid=".179uv29cnds.0.1.1.0.0.0.0.0"></span><span
+                    name="blogTitle" data-reactid=".179uv29cnds.0.1.1.0.0.0.0.1">《按下回车后》二：浏览器缓存</span>
+                <li title="原创" name="Original" class="title-icon icon-small icon-small-blog_self"
+                    data-reactid=".179uv29cnds.0.1.1.0.0.0.0.2:$tag_0"></li>
+                <div class="hi-blog-personal-detail-clear" data-reactid=".179uv29cnds.0.1.1.0.0.0.0.3"></div>
+            </h3>
+            <div class="hi-blog-personal-detail-title-bar" data-reactid=".179uv29cnds.0.1.1.0.0.0.1"><span
+                    name="createTime" data-reactid=".179uv29cnds.0.1.1.0.0.0.1.0">日期：2017-07-31 10:55</span><span
+                    name="readCount" data-reactid=".179uv29cnds.0.1.1.0.0.0.1.1">浏览：92</span><a href="#comment_pop"
+                                                                                                title="查看评论列表"
+                                                                                                data-reactid=".179uv29cnds.0.1.1.0.0.0.1.2"><span
+                    name="commentCount" data-reactid=".179uv29cnds.0.1.1.0.0.0.1.2.0">评论：3</span></a></div>
+        </div>
+        <div id="personal_cont" class="hi-blog-personal-detail-leftpanel-content"
+             data-reactid=".179uv29cnds.0.1.1.0.0.1"><p
+                style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line"><span
+                style="font-family:
+宋体">在介绍浏览器缓存之前，先官方性地介绍一下</span><span style="font-family:宋体">web<span>缓存。</span></span></p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line">
+                <span style="font-family:宋体">&nbsp;</span></p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line;margin-left:0cm;text-indent:0cm;line-height:normal;
+background:white;text-autospace:ideograph-numeric ideograph-other"><b><span
+                    style="font-family:'Helvetica',sans-serif;color:#333333;layout-grid-mode:both">1<span
+                    style="font:7.0pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></b><b><span
+                    style="font-family:宋体;color:#333333;layout-grid-mode:both">什么是</span></b><b><span
+                    style="font-family:'Helvetica',sans-serif;color:#333333;layout-grid-mode:both">Web</span></b><b><span
+                    style="font-family:宋体;color:#333333;layout-grid-mode:both">缓存</span></b></p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line;line-height:normal;background:white;text-autospace:
+ideograph-numeric ideograph-other"><span style="font-family:宋体;
+color:#444444;layout-grid-mode:both">广义的来说，</span><span style="font-family:
+'Helvetica',sans-serif;color:#444444;layout-grid-mode:both">Web</span><span
+                    style="font-family:宋体;color:#444444;layout-grid-mode:both">缓存是指</span><span
+                    style="font-family:'Helvetica',sans-serif;color:#444444;layout-grid-mode:both">Web</span><span
+                    style="font-family:宋体;color:#444444;layout-grid-mode:both">资源（如</span><span
+                    style="font-family:'Helvetica',sans-serif;color:#444444;layout-grid-mode:both">html</span><span
+                    style="font-family:宋体;color:#444444;layout-grid-mode:both">、</span><span
+                    style="font-family:宋体;color:#444444;layout-grid-mode:both">js<span>文件，图片，数据等）存在于</span></span><span
+                    style="font-family:'Helvetica',sans-serif;color:#444444;layout-grid-mode:both">Web</span><span
+                    style="font-family:宋体;color:#444444;layout-grid-mode:both">服务器和客户端（浏览器）之间的副本。缓存会保存某个请求的返回结果的副本一段时间，当下一个请求发出时，如果是相同的</span><span
+                    style="font-family:'Helvetica',sans-serif;color:#444444;layout-grid-mode:both">URL</span><span
+                    style="font-family:宋体;color:#444444;layout-grid-mode:both">，缓存会根据缓存机制决定是直接使用副本响应访问请求，还是向源服务器再次发送请求。如浏览器会缓存访问过网站的网页，当再次访问这个</span><span
+                    style="font-family:'Helvetica',sans-serif;color:#444444;layout-grid-mode:both">URL</span><span
+                    style="font-family:宋体;color:#444444;layout-grid-mode:both">地址的时候，如果网页没有更新，就不会再次下载网页，而是直接使用本地缓存的网页。只有当网站明确标识资源已经更新，浏览器才会再次下载网页。</span>
+            </p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line;line-height:normal;background:white;text-autospace:
+ideograph-numeric ideograph-other"><span style="font-family:宋体;color:#444444;
+layout-grid-mode:both">&nbsp;</span></p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line;margin-left:0cm;text-indent:0cm;line-height:normal;
+background:white;text-autospace:ideograph-numeric ideograph-other"><b><span
+                    style="font-family:'Helvetica',sans-serif;color:#333333;layout-grid-mode:both">2<span
+                    style="font:7.0pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></b><b><span
+                    style="font-family:'Helvetica',sans-serif;color:#333333;layout-grid-mode:both">Web</span></b><b><span
+                    style="font-family:宋体;color:#333333;layout-grid-mode:both">缓存的作用</span></b></p>
+            <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:36.0pt;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line;margin-left:39.75pt;text-indent:-18.0pt">
+                a.<span style="font:7.0pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+                    style="font-family:宋体">减少网络带宽消耗</span></p>
+            <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:36.0pt;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line;margin-left:39.75pt;text-indent:
+-18.0pt">b.<span style="font:7.0pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><span style="font-family:宋体">降低服务器压力</span></p>
+            <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:36.0pt;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line;margin-left:39.75pt;text-indent:-18.0pt">
+                c.<span style="font:7.0pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+                    style="font-family:宋体">减少网络延迟，加快页面打开速度</span></p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line;line-height:normal;background:white;text-autospace:
+ideograph-numeric ideograph-other"><span style="font-family:宋体;color:#444444;
+layout-grid-mode:both">&nbsp;</span></p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line;margin-left:0cm;text-indent:0cm;line-height:normal;
+background:white;text-autospace:ideograph-numeric ideograph-other"><b><span
+                    style="font-family:'Helvetica',sans-serif;color:#333333;layout-grid-mode:both">3<span
+                    style="font:7.0pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></b><b><span
+                    style="font-family:'Helvetica',sans-serif;color:#333333;layout-grid-mode:both">Web</span></b><b><span
+                    style="font-family:宋体;color:#333333;layout-grid-mode:both">缓存的类型</span></b></p>
+            <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:36.0pt;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line;margin-left:39.75pt;text-indent:-18.0pt">
+                a.<span style="font:7.0pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+                    style="font-family:宋体">数据库数据缓存</span></p>
+            <p style="margin: 0cm 0cm 0.0001pt 40px; line-height: 150%; font-size: 10.5pt; font-family: &quot;Times New Roman&quot;, serif;">
+                <span style="font-family:宋体">为了提供查询的性能，会将查询后的数据放到内存中进行缓存，下次查询时，直接从内存缓存直接返回，提供响应效率。比如常用的缓存方案有</span><a
+                    href="http://www.mysql.com/why-mysql/memcached/" target="_blank" title="MySQL and Memcached">memcached</a><span
+                    style="font-family:
+宋体">等。</span>&nbsp;&nbsp;</p>
+            <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:36.0pt;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line;margin-left:39.75pt;text-indent:-18.0pt">
+                b.<span style="font:7.0pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+                    style="font-family:宋体">服务器端缓存</span></p>
+            <p style="margin: 0cm 0cm 0.0001pt 40px; line-height: 150%; font-size: 10.5pt;"><span
+                    style="font-family: 楷体, 楷体_GB2312;">代理服务器缓存</span></p>
+            <p style="margin: 0cm 0cm 0.0001pt 40px; line-height: 150%; font-size: 10.5pt; font-family: &quot;Times New Roman&quot;, serif;">
+                <span style="font-family:宋体">代理服务器是浏览器和源服务器之间的中间服务器，浏览器先向这个中间服务器发起</span>Web<span
+                    style="font-family:宋体">请求，经过处理后（比如权限验证，缓存匹配等），再将请求转发到源服务器。代理服务器缓存的运作原理跟浏览器的运作原理差不多，只是规模更大。可以把它理解为一个共享缓存，不只为一个用户服务，一般为大量用户提供服务，因此在减少相应时间和带宽使用方面很有效，同一个副本会被重用多次。常见代理服务器缓存解决方案有</span><a
+                    href="http://www.squid-cache.org/" target="_blank" title="squid cache">Squid</a><span
+                    style="font-family:宋体">等，这里不再详述。</span></p>
+            <p style="margin: 0cm 0cm 0.0001pt 40px; line-height: 150%; font-size: 10.5pt;"><span
+                    style="font-family: 楷体, 楷体_GB2312;">CDN缓存</span></p>
+            <p style="margin: 0cm 0cm 0.0001pt 40px; line-height: 150%; font-size: 10.5pt; font-family: &quot;Times New Roman&quot;, serif;">
+                CDN<span style="font-family:宋体">（</span>Content
+                delivery networks<span style="font-family:宋体">）缓存，也叫网关缓存、反向代理缓存。</span>CDN<span style="font-family:宋体">缓存一般是由网站管理员自己部署，为了让他们的网站更容易扩展并获得更好的性能。浏览器先向</span>CDN<span
+                    style="font-family:宋体">网关发起</span>Web<span style="font-family:宋体">请求，网关服务器后面对应着一台或多台负载均衡源服务器，会根据它们的负载请求，动态将请求转发到合适的源服务器上。虽然这种架构负载均衡源服务器之间的缓存没法共享，但却拥有更好的处扩展性。从浏览器角度来看，整个</span>CDN<span
+                    style="font-family:宋体">就是一个源服务器，从这个层面来说，本文讨论浏览器和服务器之间的缓存机制，在这种架构下同样适用。</span></p>
+            <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:36.0pt;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line;margin-left:39.75pt;text-indent:-18.0pt">
+                c.<span style="font:7.0pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+                    style="font-family:宋体">浏览器端缓存</span></p>
+            <p style="margin: 0cm 0cm 0.0001pt 40px; line-height: 150%; font-size: 10.5pt; font-family: &quot;Times New Roman&quot;, serif;">
+                <span style="font-family:宋体">浏览器缓存根据一套与服务器约定的规则（遵守</span>HTTP<span style="font-family:宋体">协议）进行工作，浏览器会在本地缓存访问过的静态资源，下次再次访问可以根据某些判断决定是否需要重新从服务器下载。后面将具体介绍该类型缓存。</span>
+            </p>
+            <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:36.0pt;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line;margin-left:39.75pt;text-indent:-18.0pt">
+                d.<span style="font:7.0pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Web<span
+                    style="font-family:宋体">应用层缓存</span></p>
+            <p style="margin: 0cm 0cm 0.0001pt 40px; line-height: 150%; font-size: 10.5pt; font-family: &quot;Times New Roman&quot;, serif;">
+                <span style="font-family:宋体">应用层缓存指的是从代码层面上，通过代码逻辑和缓存策略，实现对数据，页面，图片等资源的缓存，可以根据实际情况选择将数据存在文件系统或者内存中，减少数据库查询或者读写瓶颈，提高响应效率。</span>
+            </p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line;line-height:normal;background:white;text-autospace:
+ideograph-numeric ideograph-other"><span style="font-family:宋体;color:#444444;
+layout-grid-mode:both">&nbsp;</span></p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line;line-height:normal;background:white;text-autospace:
+ideograph-numeric ideograph-other"><span style="font-size:12.0pt;font-family:
+宋体;color:#444444;layout-grid-mode:both">&nbsp;</span></p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line"><span
+                    style="font-size:12.0pt;line-height:150%;
+font-family:黑体">本篇博文将具体介绍浏览器缓存，浏览器缓存一般情况下主要是</span><span style="font-size:12.0pt;
+line-height:150%;font-family:黑体">HTTP<span>缓存机制的实现，具体流程图如下（图片来源：《</span></span><a
+                    href="http://www.cnblogs.com/skynet/archive/2012/11/28/2792503.html" target="_blank"><span style="font-size:12.0pt;line-height:150%;
+font-family:黑体">浏览器缓存机制</span></a><span style="font-size:12.0pt;
+line-height:150%;font-family:黑体">》）：</span></p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line;margin-bottom:15.0pt;text-align:center;
+line-height:30.0pt;background:white;text-autospace:ideograph-numeric ideograph-other" align="center"><span style="font-size:11.5pt;font-family:'微软雅黑',sans-serif;color:#2E2E2E;layout-grid-mode:
+both"><img border="0" width="411" height="369" id="图片 10"
+           src="http://image.hw3static.com/hi/staticimages/hi3msf/images/2017/0731/10/597e9b5bdc6d6.jpg"
+           src-data="http://image.hw3static.com/hi/staticimages/hi3msf/images/2017/0731/10/597e9b5bdc6d6.jpg"
+           alt="http://ww4.sinaimg.cn/mw690/6941baebgw1eukzznf6tsj20bf0a974t.jpg"></span></p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line;margin-bottom:15.0pt;text-align:center;
+line-height:30.0pt;background:white;text-autospace:ideograph-numeric ideograph-other" align="center"><span style="font-size:11.5pt;font-family:'微软雅黑',sans-serif;color:#2E2E2E;layout-grid-mode:
+both"><br>
+</span></p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line;margin-bottom:15.0pt;text-align:center;
+line-height:30.0pt;background:white;text-autospace:ideograph-numeric ideograph-other" align="center"><span style="font-size:11.5pt;font-family:'微软雅黑',sans-serif;color:#2E2E2E;layout-grid-mode:
+both"><img border="0" width="554" height="527" id="图片 11"
+           src="http://image.hw3static.com/hi/staticimages/hi3msf/images/2017/0731/10/597e9b5bdd06e.jpg"
+           src-data="http://image.hw3static.com/hi/staticimages/hi3msf/images/2017/0731/10/597e9b5bdd06e.jpg"
+           alt="http://ww3.sinaimg.cn/mw690/6941baebgw1eul013c3gmj20fe0eo75e.jpg"></span></p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line;margin-bottom:15.0pt;line-height:30.0pt;background:
+white;text-autospace:ideograph-numeric ideograph-other"><b><span style="font-size:11.0pt;font-family:'微软雅黑',sans-serif;color:#2E2E2E;layout-grid-mode:
+both">&nbsp;</span></b></p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line">
+                <span style="font-family:宋体">浏览器缓存的核心就是把缓存的内容保存在了本地，而不用每次都向服务端发送相同的请求。需要注意的是，浏览器是依靠请求和响应中的</span><span
+                    style="font-family:宋体">HTTP<span>头信息来控制缓存的，如上图中的</span>Etag<span>、</span>Last-Modified<span>等，下面将具体介绍各个</span>HTTP<span>头信息：</span></span>
+            </p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line"><span
+                    style="font-family:宋体"><span><br>
+</span></span></p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line"><span
+                    style="font-size:18.0pt;line-height:150%;font-family:
+黑体">Expires<span>与</span>Cache-Control</span></p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line;margin-bottom:15.0pt;line-height:normal;background:
+white;text-autospace:ideograph-numeric ideograph-other"><span style="font-size:
+11.5pt;font-family:'微软雅黑',sans-serif;color:#2E2E2E;layout-grid-mode:both">Expires<span>和</span>Cache-Control<span>就是服务端用来约定和客户端的有效时间的。</span></span>
+            </p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line;margin-bottom:15.0pt;text-align:center;
+line-height:normal;background:white;text-autospace:ideograph-numeric ideograph-other" align="center"><span style="font-size:11.5pt;font-family:'微软雅黑',sans-serif;color:#2E2E2E;layout-grid-mode:
+both"><img border="0" width="420" height="187" id="图片 12"
+           src="http://image.hw3static.com/hi/staticimages/hi3msf/images/2017/0731/10/597e9b5bdda98.png"
+           src-data="http://image.hw3static.com/hi/staticimages/hi3msf/images/2017/0731/10/597e9b5bdda98.png"></span>
+            </p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line">
+                <span style="font-family:宋体">如上图所示的一个响应头，</span>Date<span
+                    style="font-family:宋体">为当前时间，</span>Expires<span style="font-family:宋体">规定了缓存失效时间，</span>Cache-Control<span
+                    style="font-family:宋体">的</span>max-age<span style="font-family:宋体">规定了缓存有效时间（</span>604800s<span
+                    style="font-family:宋体">）。</span>Expires<span style="font-family:宋体">是</span>HTTP1.0<span
+                    style="font-family:宋体">的，而</span>Cache-Control<span style="font-family:宋体">是</span>HTTP1.1<span
+                    style="font-family:宋体">的，如果</span>max-age<span style="font-family:
+宋体">和</span>Expires<span style="font-family:宋体">同时存在，前者优先级高于后者。</span>Cache-Control<span style="font-family:宋体">具体参数如下（参考</span><a
+                    href="http://www.cnblogs.com/skynet/archive/2012/11/28/2792503.html" target="_blank"><span
+                    style="font-family:宋体">浏览器缓存机制</span></a><span style="font-family:宋体">）：</span></p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line;margin-bottom:15.0pt;text-align:center;
+line-height:normal;background:white;text-autospace:ideograph-numeric ideograph-other" align="center"><span style="font-size:11.5pt;font-family:'微软雅黑',sans-serif;color:#2E2E2E;layout-grid-mode:
+both"><img border="0" width="594" height="297" id="图片 8"
+           src="http://image.hw3static.com/hi/staticimages/hi3msf/images/2017/0731/10/597e9b5bde24d.jpg"
+           src-data="http://image.hw3static.com/hi/staticimages/hi3msf/images/2017/0731/10/597e9b5bde24d.jpg"
+           alt="http://ww3.sinaimg.cn/mw690/6941baebgw1eukzzwcvnij20gi089jvb.jpg"></span></p>
+            <p style="margin: 0cm 0cm 0.0001pt; line-height: 150%; font-size: 10.5pt;"><span
+                    style="font-size: 10.5pt; line-height: 150%; font-family: 宋体;">当缓存未过期时，下次再次访问该文件，浏览器不会访问服务器，将直接从缓存中取，如下图Status Code: 200(from disk cache)。</span>
+            </p>
+            <p style="text-align: center; margin: 0cm 0cm 0.0001pt; line-height: 150%; font-size: 10.5pt; font-family: &quot;Times New Roman&quot;, serif;"><span
+                    style="font-size:18.0pt;line-height:150%;font-family:
+黑体"><img class="imgclass" id="1501485932454"
+         src="http://image.hw3static.com/hi/staticimages/hi3msf/images/2017/0731/15/597edb5b0844e.png"
+         src-data="http://image.hw3static.com/hi/staticimages/hi3msf/images/2017/0731/15/597edb5b0844e.png"
+         style=" width:367px; height:233px;" border="0" align="center"><br>
+</span></p>
+            <p style="text-align: center; margin: 0cm 0cm 0.0001pt; line-height: 150%; font-size: 10.5pt; font-family: &quot;Times New Roman&quot;, serif;"><span
+                    style="font-size:18.0pt;line-height:150%;font-family:
+黑体"><br>
+</span></p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line"><span
+                    style="font-size:18.0pt;line-height:150%;font-family:
+黑体">Last-Modified/If-Modified-Since</span></p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line">
+                <span style="font-family:宋体">前面</span><span style="font-size:11.5pt;line-height:150%;font-family:'微软雅黑',sans-serif;
+color:#2E2E2E;layout-grid-mode:both">Expires<span>和</span>Cache-Control<span>只能控制缓存时间，不能对判断缓存的文件是否更新，即是否真的有必要重新远程获取。</span></span>
+            </p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line">
+                Last-Modified/If-Modified-Since<span
+                    style="font-family:宋体">是检测服务端文件是否更新的一种方式，要配合</span>Cache-Control<span
+                    style="font-family:宋体">使用。配置</span>Last-Modified<span
+                    style="font-family:宋体">的情况下，浏览器再次访问</span>URI<span style="font-family:
+宋体">的资源，<b>还是会发送请求到服务器以询问文件是否已经修改，如果没有，服务器会只发送一个</b></span><b>304</b><b><span style="font-family:宋体">回给浏览器，告诉浏览器直接从自己本地的缓存取数据；如果修改过那就整个数据重新发给浏览器；</span></b>
+            </p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line">
+                Cache-Control/Expires<span style="font-family:
+宋体">则不同，如果检测到本地的缓存还是有效的时间范围内，<b>浏览器直接使用本地副本，不会发送任何请求。</b></span></p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line">
+                <span style="font-family:宋体">两者一起使用时，</span>Cache-Control/Expires<span
+                    style="font-family:宋体">的优先级要高于</span>Last-Modified<span style="font-family:宋体">。即当本地副本根据</span>Cache-Control/Expires<span
+                    style="font-family:宋体">发现还在有效期内时，则不会再次发送请求去服务器询问修改时间（</span>Last-Modified<span
+                    style="font-family:宋体">）或实体标识（</span>Etag<span style="font-family:宋体">）了。</span></p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line">
+                <span style="font-family:宋体">一般情况下，使用</span>Cache-Control/Expires<span style="font-family:宋体">会配合</span>Last-Modified/ETag<span
+                    style="font-family:宋体">一起使用，因为即使服务器设置缓存时间</span>, <span style="font-family:宋体">当用户点击</span>“<span
+                    style="font-family:宋体">刷新</span>”<span style="font-family:宋体">按钮时，浏览器会忽略缓存继续向服务器发送请求，这时</span>Last-Modified/ETag<span
+                    style="font-family:宋体">将能够很好利用</span>304<span style="font-family:宋体">，从而减少响应开销。</span></p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line"><span
+                    style="font-size:18.0pt;line-height:150%;font-family:
+黑体">&nbsp;</span></p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line"><span
+                    style="font-size:18.0pt;line-height:150%;font-family:
+黑体">ETag/If-None-Match</span></p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line">
+                <span style="font-family:宋体">那么既然有了</span>Last-Modified<span style="font-family:宋体">，足以让浏览器知道本地缓存是否已经更新，为什么还需要</span>Etag<span
+                    style="font-family:宋体">（实体标识）呢？</span>HTTP1.1<span style="font-family:宋体">中</span>Etag<span
+                    style="font-family:宋体">的出现主要是为了解决几个</span>Last-Modified<span style="font-family:宋体">比较难解决的问题：</span>
+            </p>
+            <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:36.0pt;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line;margin-left:46.8pt;text-indent:-34.0pt">
+                1.<span style="font:7.0pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp; </span>Last-Modified<span
+                    style="font-family:宋体">标注的最后修改只能精确到秒级，如果某些文件在</span>1<span style="font-family:宋体">秒钟以内，被修改多次的话，它将不能准确地标示文件的更新时间。</span>
+            </p>
+            <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:36.0pt;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line;margin-left:46.8pt;text-indent:-34.0pt">
+                2.<span style="font:7.0pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+                    style="font-family:宋体">如果某些文件会被定期生成，当有时内容并没有任何变化，但</span>Last-Modified<span style="font-family:宋体">却改变了，导致文件没法使用缓存。</span>
+            </p>
+            <h1 style="margin-left:46.8pt;text-indent:-34.0pt"><span style="font-size:10.5pt;
+font-family:宋体;font-weight:normal">3.<span style="font:7.0pt 'Times New Roman'">&nbsp;
+</span></span><span style="font-size:10.5pt;font-family:宋体;
+font-weight:normal">有可能存在服务器没有准确获取文件修改时间，或者与代理服务器时间不一致等情</span><span
+                    style="font-size:10.5pt;font-family:宋体;font-weight:normal">形。</span></h1>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line">
+                Etag<span style="font-family:宋体">是服务器自动生成或者由开发者生成的对应资源在服务器端的唯一标识符，能够更加准确的控制缓存。</span></p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line">
+                ETag/If-None-Match<span style="font-family:宋体">则是上面流程图中第二种检测服务端文件是否更新的方式，也要配合</span>Cache-Control<span
+                    style="font-family:宋体">使用。实际上</span>ETag<span style="font-family:宋体">是一串可以唯一标识文件内容的字符串。当客户端发现和服务器约定的直接读取缓存的时间过了，就在请求中发送</span>If-None-Match<span
+                    style="font-family:宋体">选项，其值为上次请求后响应头的</span>ETag<span
+                    style="font-family:宋体">值，如果相同，则返回</span>304<span style="font-family:
+宋体">，客户端直接读取缓存，如果不相同，返回</span>200<span style="font-family:宋体">，下载服务器最新的数据，更新</span>ETag<span
+                    style="font-family:宋体">值。</span></p>
+            <p style="text-align: center; margin: 0cm 0cm 0.0001pt; line-height: 150%; font-size: 10.5pt; font-family: &quot;Times New Roman&quot;, serif;">
+                <img class="imgclass" id="1501485415345"
+                     src="http://image.hw3static.com/hi/staticimages/hi3msf/images/2017/0731/15/597ed9562a9e7.png"
+                     src-data="http://image.hw3static.com/hi/staticimages/hi3msf/images/2017/0731/15/597ed9562a9e7.png"
+                     border="0"
+                     style="font-size: 10.5pt; background-color: transparent; font-family: 宋体; width: 373px; height: 379px;">
+            </p>
+            <p style="margin: 0cm 0cm 0.0001pt; line-height: 150%; font-size: 10.5pt;"><span style="font-family: 宋体;">如图，当请求的If-Node-Match字段和服务器中文件本身的ETag相同（即文件没被改动，缓存的文件是最新的），服务器直接返回304，不会返回文件，浏览器直接使用缓存文件。</span>
+            </p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line">
+                <b>Last-Modified</b><b><span style="font-family:
+宋体">与</span>ETag</b><b><span style="font-family:宋体">是可以一起使用的，服务器会优先验证</span>ETag</b><b><span style="font-family:宋体">，一致的情况下，才会继续比对</span>Last-Modified</b><b><span
+                    style="font-family:宋体">，最后才决定是否返回</span>304</b><b><span style="font-family:宋体">。即当</span>ETag</b><b><span
+                    style="font-family:
+宋体">和</span>Last-Modified</b><b><span style="font-family:宋体">都满足的情况下才会返回</span>304</b><b><span
+                    style="font-family:宋体">。</span></b></p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line">
+                &nbsp;</p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line">
+                HTTP<span style="font-family:宋体">头详细信息的可以继续参考</span>:<span
+                    style="font-family:'Helvetica',sans-serif;color:#444444;background:white"> </span><span
+                    style="font-family:宋体;color:#444444;background:white">《</span><a
+                    href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html"><span
+                    style="font-family:'Helvetica',sans-serif;color:#1982D1;background:white">HTTP
+Header definition</span></a><span style="font-family:宋体;color:#444444;
+background:white">》</span></p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line">
+                &nbsp;</p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line">
+                &nbsp;</p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line"><span
+                    style="font-size:18.0pt;line-height:150%;
+font-family:黑体">非</span><span style="font-size:18.0pt;line-height:150%;
+font-family:黑体">HTTP<span>协议的缓存</span></span></p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line">
+                <span style="font-family:宋体">上述简单介绍了基于</span>HTTP<span style="font-family:宋体">协议的缓存机制，一般浏览器是基于此实现缓存操作的。但是也有非</span>HTTP<span
+                    style="font-family:宋体">协议定义的缓存机制，如使用</span>HTML Meta <span style="font-family:宋体">标签，</span>Web<span
+                    style="font-family:宋体">开发者可以在</span>HTML<span style="font-family:
+宋体">页面的</span>&lt;head&gt;<span style="font-family:宋体">节点中加入</span>&lt;meta&gt;<span style="font-family:宋体">标签：</span>
+            </p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line">
+                &lt;META HTTP-EQUIV="Pragma"
+                CONTENT="no-cache"&gt;</p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line">
+                <span style="font-family:宋体">这段代码告诉浏览器当前页面不被缓存，每次访问都需要去服务器获取。但只有部分浏览器可以支持，而且所有缓存代理服务器都不支持，因为代理不解析</span>HTML<span
+                    style="font-family:宋体">内容本身。</span></p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line;margin-bottom:15.0pt;line-height:30.0pt;background:
+white;text-autospace:ideograph-numeric ideograph-other"><span style="font-size:
+11.5pt;font-family:'微软雅黑',sans-serif;color:#2E2E2E;layout-grid-mode:both">&nbsp;</span></p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line"><span
+                    style="font-size:18.0pt;line-height:150%;
+font-family:黑体">无法缓存的请求</span></p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line">
+                <span style="font-family:宋体">无法被浏览器缓存的请求：</span></p>
+            <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:36.0pt;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line;text-indent:-18.0pt">
+                1.<span style="font:7.0pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>HTTP<span
+                    style="font-family:宋体">信息头中包含</span>Cache-Control:no-cache<span style="font-family:宋体">，</span>pragma:no-cache<span
+                    style="font-family:宋体">（</span>HTTP1.0<span style="font-family:宋体">），或</span>Cache-Control:max-age=0<span
+                    style="font-family:宋体">等告诉浏览器不用缓存的请求。</span></p>
+            <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:36.0pt;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line;text-indent:-18.0pt">
+                2.<span style="font:7.0pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+                    style="font-family:宋体">需要根据</span>Cookie<span style="font-family:宋体">，认证信息等决定输入内容的动态请求是不能被缓存。</span>
+            </p>
+            <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:36.0pt;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line;text-indent:-18.0pt">
+                3.<span style="font:7.0pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+                    style="font-family:宋体">经过</span>HTTPS<span style="font-family:宋体">安全加密的请求（有人也经过测试发现，</span>ie<span
+                    style="font-family:宋体">其实在头部加入</span>Cache-Control<span style="font-family:宋体">：</span>max-age<span
+                    style="font-family:宋体">信息，</span>firefox<span style="font-family:宋体">在头部加入</span>Cache-Control:Public<span
+                    style="font-family:宋体">之后，能够对</span>HTTPS<span style="font-family:宋体">的资源进行缓存，参考《</span><a
+                    href="http://www.ruanyifeng.com/blog/2011/02/seven_myths_about_https.html" target="_blank"
+                    title="HTTPS七个误解">HTTPS<span style="font-family:宋体">的七个误解</span></a><span
+                    style="font-family:宋体">》）。</span></p>
+            <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:36.0pt;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line;text-indent:-18.0pt">
+                4.<span style="font:7.0pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>POST<span
+                    style="font-family:宋体">请求无法被缓存。</span></p>
+            <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:36.0pt;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line;text-indent:-18.0pt">
+                5.<span style="font:7.0pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>HTTP<span
+                    style="font-family:宋体">响应头中不包含</span>Last-Modified/Etag<span style="font-family:宋体">，也不包含</span>Cache-Control/Expires<span
+                    style="font-family:宋体">的请求无法被缓存。</span></p>
+            <h3 style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:36.0pt;
+margin-bottom:.0001pt;background:white"><b><span style="font-family:宋体;
+color:#2E2E2E;layout-grid-mode:both">&nbsp;</span></b></h3>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line"><span
+                    style="font-size:14.0pt;line-height:150%;
+font-family:黑体">附：用户操作行为与缓存</span></p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line">
+                <span style="font-family:宋体">用户在使用浏览器的时候，会有各种操作，比如输入地址后回车，按</span>F5<span style="font-family:宋体">刷新等，不同的操作对缓存有不同的影响。</span>
+            </p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line;text-align:center"
+               align="center"><a href="http://alloyteam.com/wp-content/uploads/2012/03/user-action2.png"><span
+                    style="color:windowtext;layout-grid-mode:both;text-decoration:none"><img border="0" width="490"
+                                                                                             height="171" id="图片 14"
+                                                                                             src="http://image.hw3static.com/hi/staticimages/hi3msf/images/2017/0731/10/597e9b5be1198.png"
+                                                                                             src-data="http://image.hw3static.com/hi/staticimages/hi3msf/images/2017/0731/10/597e9b5be1198.png"
+                                                                                             alt="用户操作与缓存"></span></a>
+            </p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line">
+                <span style="font-family:宋体">用户直接在地址栏按回车，一般会响应</span>HTTP200<span style="font-family:宋体">（</span>from
+                cache<span style="font-family:宋体">）；</span></p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line">
+                <span style="font-family:宋体">当用户在按</span>F5<span style="font-family:宋体">进行刷新，会忽略</span>Expires/Cache-Control<span
+                    style="font-family:宋体">的设置，再次发送请求到服务器，而</span>Last-Modified/Etag<span style="font-family:宋体">还是有效的，服务器会根据情况判断返回</span>304<span
+                    style="font-family:宋体">还是</span>200<span style="font-family:宋体">；</span></p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line">
+                <span style="font-family:宋体">当用户使用</span>Ctrl+F5<span style="font-family:宋体">进行强制刷新的时候，只是所有的缓存机制都将失效，重新从服务器获取资源。</span>
+            </p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line;line-height:normal;background:white;text-autospace:
+ideograph-numeric ideograph-other"><b><span style="font-family:宋体;color:#2E2E2E;
+layout-grid-mode:both">&nbsp;</span></b></p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line;line-height:normal;background:white;text-autospace:
+ideograph-numeric ideograph-other"><span style="font-size:11.5pt;
+font-family:'微软雅黑',sans-serif;color:#2E2E2E;layout-grid-mode:both">关于用户操作更多可以参考</span><span style="font-size:11.5pt;font-family:'微软雅黑',sans-serif;color:#0099CC;
+border:none windowtext 1.0pt;padding:0cm;layout-grid-mode:both"><a href="http://www.laruence.com/2010/03/05/1332.html"
+                                                                   target="_blank">浏览器缓存机制</a></span></p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line;line-height:normal;background:white;text-autospace:
+ideograph-numeric ideograph-other"><br>
+            </p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line;line-height:normal;background:white;text-autospace:
+ideograph-numeric ideograph-other"><br>
+            </p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line;line-height:normal;background:white;text-autospace:
+ideograph-numeric ideograph-other"><br>
+            </p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line;line-height:normal;background:white;text-autospace:
+ideograph-numeric ideograph-other">
+            </p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line"><span
+                    style="font-size:
+18.0pt;line-height:150%;font-family:黑体">技术细节</span></p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line">
+                <b><span style="font-size:14.0pt;line-height:150%">"no-cache",
+"no-store", "must-revalidate"</span></b></p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line">
+                Cache-Control<span style="font-family:宋体">字段可以设置的不仅仅是</span>max-age<span style="font-family:宋体">存储时间，还有其他额外的值可以填写，甚至可以组合。主要使用的值有如下：</span>
+            </p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line;margin-left:21.0pt"><span
+                    style="font-size:12.0pt;
+line-height:150%;font-family:黑体">no-cache:</span> <span style="font-family:宋体">虽然字面意义是</span>“<span
+                    style="font-family:宋体">不要缓存</span>”<span
+                    style="font-family:宋体">。但它实际上的机制是，仍然对资源使用缓存，但每一次在使用缓存之前必须（</span>MUST<span style="font-family:宋体">）向服务器对缓存资源进行验证。</span>
+            </p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line;margin-left:21.0pt"><span
+                    style="font-size:12.0pt;
+line-height:150%;font-family:黑体">no-store:</span> <span style="font-family:宋体">不使用任何缓存。</span></p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line;margin-left:21.0pt"><span
+                    style="font-size:12.0pt;
+line-height:150%;font-family:黑体">must-revalidate:</span> <span style="font-family:宋体">如果你配置了</span>max-age<span style="font-family:
+宋体">信息，当缓存资源仍然新鲜（小于</span>max-age<span style="font-family:宋体">）时使用缓存，否则需要对资源进行验证。所以</span>must-revalidate<span
+                    style="font-family:宋体">可以和</span>max-age<span style="font-family:宋体">组合使用</span>Cache-Control:
+                must-revalidate, max-age=60</p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line">
+                <span style="font-family:宋体">有趣的事情是，虽然</span>no-cache<span style="font-family:宋体">意为对缓存进行验证，但是因为大家广泛的错误的把它当作</span>no-store<span
+                    style="font-family:宋体">来使用，所以有的浏览器也就附和了这种设计。</span></p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line">
+                <b><span style="font-size:14.0pt;line-height:150%">Expires
+VS. max-age</span></b></p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line">
+                Expires<span style="font-family:宋体">和</span>max-age<span
+                    style="font-family:宋体">都是用于控制缓存的生命周期。不同的是</span>Expires<span
+                    style="font-family:宋体">指定的是过期的具体时间，例如</span>Sun, 21 Mar 2027
+                08:52:14 GMT<span style="font-family:宋体">，而</span>max-age<span style="font-family:宋体">指定的是生命时长秒数</span>315360000<span
+                    style="font-family:宋体">。</span></p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line">
+                <span style="font-family:宋体">区别在于</span>Expires<span style="font-family:宋体">是</span> HTTP/1.0 <span
+                    style="font-family:宋体">的中的标准，而</span>max-age<span style="font-family:
+宋体">是属于</span>Cache-Control<span style="font-family:宋体">的内容，是</span>
+                HTTP/1.1 <span style="font-family:宋体">中的定义的。但为了想向前兼容，这两个属性仍然要同时存在。</span></p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line">
+                <span style="font-family:宋体">但有一种更倾向于使用</span>max-age<span
+                    style="font-family:宋体">的观点认为</span>Expires<span style="font-family:宋体">过于复杂了。例如上面的例子</span>Sun, 21
+                Mar 2027 08:52:14 GMT<span style="font-family:宋体">，如果你在表示小时的数字缺少了一个</span>0<span style="font-family:宋体">，则很有可能出现出错；如果日期没有转换到用户的正确时区，则有可能出错。这里出错的意思可能包括但不限于缓存失效、缓存生命周期出错等。</span>
+            </p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line">
+                <b><span style="font-size:14.0pt;line-height:150%">Etag VS.
+Last-Modified</span></b></p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line">
+                Etag<span style="font-family:宋体">和</span>Last-Modified<span style="font-family:宋体">都可以用于对资源进行验证，而</span>Last-Modified<span
+                    style="font-family:宋体">顾名思义，表示资源最后的更新时间。</span></p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line">
+                <span style="font-family:宋体">我们把这两者都成为验证器（</span>Validators<span style="font-family:宋体">），不同的是，</span>Etag<span
+                    style="font-family:宋体">属于强验证（</span>Strong Validation<span style="font-family:宋体">），因为它期望的是资源字节级别的一致；而</span>Last-Modified<span
+                    style="font-family:宋体">属于弱验证（</span>Weak Validation<span style="font-family:宋体">），只要资源的主要内容一致即可，允许例如页底的广告，页脚不同。</span>
+            </p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line">
+                <span style="font-family:宋体">根据</span><a
+                    href="https://link.juejin.im/?target=http%3A%2F%2Flink.zhihu.com%2F%3Ftarget%3Dhttp%253A%2F%2Fwww.ietf.org%2Frfc%2Frfc2616.txt"
+                    target="_blank">RFC 2616</a><span style="font-family:宋体">标准中的</span>13.3.4<span
+                    style="font-family:宋体">小节，一个使用</span>HTTP 1.1<span
+                    style="font-family:宋体">标准的服务端应该（</span>SHOULD<span style="font-family:
+宋体">）同时发送</span>Etag<span style="font-family:宋体">和</span>Last-Modified<span style="font-family:宋体">字段。同时一个支持</span>HTTP
+                1.1<span style="font-family:宋体">的客户端，比如浏览器，如果服务端有提供</span>Etag<span style="font-family:宋体">的话，必须（</span>MUST<span
+                    style="font-family:
+宋体">）首先对</span>Etag<span style="font-family:宋体">进行</span>Conditional
+                Request<span style="font-family:宋体">（</span>If-None-Match<span style="font-family:宋体">头信息）；如果两者都有提供，那么应该（</span>SHOULD<span
+                    style="font-family:宋体">）同时对两者进行</span>Conditional Request<span style="font-family:宋体">（</span>If-Modified-Since<span
+                    style="font-family:宋体">头信息）。如果服务端对两者的验证结果不一致，例如通过一个条件判断资源发生了更改，而另一个判定资源没有发生更改，则不允许返回</span>304<span
+                    style="font-family:宋体">状态。但话说回来，是否返回还是通过服务端编写的实际代码决定的。所以仍然有操纵的空间。</span></p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line">
+                <b><span style="font-size:14.0pt;line-height:150%">max-age=0
+VS. no-cache</span></b></p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line">
+                max-age=0<span style="font-family:宋体">是在告诉浏览器，资源已经过期了，你应该（</span>SHOULD<span style="font-family:宋体">）对资源进行重新验证了；而</span>no-cache<span
+                    style="font-family:宋体">则是告诉浏览器在每一次使用缓存之前，你必须（</span>MUST<span
+                    style="font-family:宋体">）对资源进行重新验证。</span></p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line">
+                <span style="font-family:宋体">区别在于，</span>SHOULD<span style="font-family:宋体">是非强制性的，而</span>MUST<span
+                    style="font-family:宋体">是强制性的。在</span>no-cache<span style="font-family:
+宋体">的情况下，浏览器在向服务器验证成功之前绝不会使用过期的缓存资源，而</span>max-age=0<span style="font-family:宋体">则不一定了。虽然理论上来说它们的效果应该是一致的。</span></p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line">
+                <b><span style="font-size:14.0pt;line-height:150%">public
+VS. private</span></b></p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line">
+                <span style="font-family:宋体">要知道从服务器到浏览器之间并非只有浏览器能够对资源进行缓存，服务器的返回可能会经过一些中间（</span>intermediate<span
+                    style="font-family:宋体">）服务器甚至甚至专业的中间缓存服务器，还有</span>CDN<span style="font-family:宋体">。而有些请求返回是用户级别、是私人的，所以你可能不希望这些中间服务器缓存返回。此时你需要将</span>Cache-Control<span
+                    style="font-family:宋体">设置为</span>private<span style="font-family:宋体">以避免暴露。</span></p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line">
+                <span style="font-family:宋体">所以综上，关于如何设计缓存机制，还是要依据你的需求而定。</span></p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line">
+                &nbsp;</p>
+            <br>
+            <p></p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line;line-height:normal;background:white;text-autospace:
+ideograph-numeric ideograph-other"><br>
+            </p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line;line-height:normal;background:white;text-autospace:
+ideograph-numeric ideograph-other"><br>
+            </p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line;margin-bottom:15.0pt;line-height:30.0pt;background:
+white;text-autospace:ideograph-numeric ideograph-other"><b><span style="font-size:19.5pt;font-family:'微软雅黑',sans-serif;color:#2E2E2E;layout-grid-mode:
+both">参考</span></b></p>
+            <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:36.0pt;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line;text-indent:-18.0pt">
+                1.<span style="font:7.0pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><a
+                    href="http://web.jobbole.com/82997/"><span style="font-family:宋体">浏览器缓存机制浅析</span></a></p>
+            <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:36.0pt;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line;text-indent:-18.0pt">
+                2.<span style="font:7.0pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><a
+                    href="http://www.laoono.com/s-db/55.html" target="_blank"><span
+                    style="font-family:宋体">再记：浏览器缓存</span>200<span style="font-family:
+宋体">（</span>from cache<span style="font-family:宋体">）和</span>304<span style="font-family:宋体">小结</span></a></p>
+            <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:36.0pt;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line;text-indent:-18.0pt">
+                3.<span style="font:7.0pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><a
+                    href="http://alloyteam.com/2012/03/web-cache-1-web-cache-overview/"><span
+                    style="font-family:宋体">【</span>Web<span style="font-family:
+宋体">缓存机制系列】</span>1 – Web<span style="font-family:宋体">缓存的作用与类型</span></a></p>
+            <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:36.0pt;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line;text-indent:-18.0pt">
+                4.<span style="font:7.0pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><a
+                    href="http://www.alloyteam.com/2012/03/web-cache-2-browser-cache/" target="_blank"><span
+                    style="font-family:宋体">【</span>Web<span style="font-family:宋体">缓存机制系列】</span>2 <span
+                    style="font-family:宋体">–</span> Web<span style="font-family:宋体">浏览器的缓存机制</span>&nbsp;</a></p>
+            <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:36.0pt;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line;text-indent:-18.0pt">
+                5.<span style="font:7.0pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><a
+                    href="http://www.cnblogs.com/skynet/archive/2012/11/28/2792503.html" target="_blank"><span
+                    style="font-family:宋体">浏览器缓存机制</span>-<span style="font-family:宋体">吴秦</span></a></p>
+            <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:36.0pt;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line;text-indent:-18.0pt">
+                6.<span style="font:7.0pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><a
+                    href="http://www.laruence.com/2010/03/05/1332.html" target="_blank"><span style="font-family:宋体">浏览器缓存机制</span></a>
+            </p>
+            <p style="margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:36.0pt;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line;text-indent:-18.0pt">
+                7.<span style="font:7.0pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><a
+                    href="http://blog.toright.com/posts/3414/%E5%88%9D%E6%8E%A2-http-1-1-cache-%E6%A9%9F%E5%88%B6.html"
+                    target="_blank"><span style="font-family:宋体">初探</span> HTTP 1.1
+                Cache <span style="font-family:宋体">機制</span></a></p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:150%;text-autospace:none;font-size:10.5pt;font-family:'Times New Roman',serif;layout-grid-mode:line">
+                &nbsp;</p></div>
+        <div class="hi-blog-personal-detail-labels" data-reactid=".179uv29cnds.0.1.1.0.0.3"><span
+                data-reactid=".179uv29cnds.0.1.1.0.0.3.0"><span data-reactid=".179uv29cnds.0.1.1.0.0.3.0.0">标签：</span><a
+                name="blogTag" target="_blank"
+                href="http://3ms.huawei.com/doc3ms/unionSearch/unionSearch.do?method=doSearch&amp;doctype=HW3MS_CONNECT_BLOG_MKTG&amp;searchtext=前端"
+                data-reactid=".179uv29cnds.0.1.1.0.0.3.0.1:$label_0">前端</a><a name="blogTag" target="_blank"
+                                                                              href="http://3ms.huawei.com/doc3ms/unionSearch/unionSearch.do?method=doSearch&amp;doctype=HW3MS_CONNECT_BLOG_MKTG&amp;searchtext=缓存"
+                                                                              data-reactid=".179uv29cnds.0.1.1.0.0.3.0.1:$label_1">缓存</a><a
+                name="blogTag" target="_blank"
+                href="http://3ms.huawei.com/doc3ms/unionSearch/unionSearch.do?method=doSearch&amp;doctype=HW3MS_CONNECT_BLOG_MKTG&amp;searchtext=浏览器"
+                data-reactid=".179uv29cnds.0.1.1.0.0.3.0.1:$label_2">浏览器</a><a name="blogTag" target="_blank"
+                                                                               href="http://3ms.huawei.com/doc3ms/unionSearch/unionSearch.do?method=doSearch&amp;doctype=HW3MS_CONNECT_BLOG_MKTG&amp;searchtext=HTTP"
+                                                                               data-reactid=".179uv29cnds.0.1.1.0.0.3.0.1:$label_3">HTTP</a></span><span
+                class="space" data-reactid=".179uv29cnds.0.1.1.0.0.3.1"><span
+                data-reactid=".179uv29cnds.0.1.1.0.0.3.1.0">分类：</span><span name="blogCategory"
+                                                                            data-reactid=".179uv29cnds.0.1.1.0.0.3.1.1:$label_0">前端</span></span>
+        </div>
+    </div>
+    <div class="hi-blog-personal-detail-comment" data-reactid=".179uv29cnds.0.1.1.0.1">
+        <div class="comment-artcal" data-reactid=".179uv29cnds.0.1.1.0.1.0">
+            <div style="margin-top:30px;" data-reactid=".179uv29cnds.0.1.1.0.1.0.0">
+                <div class="comment-btns-actbar" style="left:-121px;" data-reactid=".179uv29cnds.0.1.1.0.1.0.0.0">
+                    <div class="comment-btns-actbar comment-btns-big " data-reactid=".179uv29cnds.0.1.1.0.1.0.0.0.0"><a
+                            href="javascript:void(0);" data-icon="recomend" class="actbar-btn actbar-btn-recomend"
+                            title="推荐精华" data-reactid=".179uv29cnds.0.1.1.0.1.0.0.0.0.0"><i
+                            class="icon-small icon-small-recomend"
+                            data-reactid=".179uv29cnds.0.1.1.0.1.0.0.0.0.0.0"></i><label
+                            data-reactid=".179uv29cnds.0.1.1.0.1.0.0.0.0.0.1"><span
+                            data-reactid=".179uv29cnds.0.1.1.0.1.0.0.0.0.0.1.0">推荐精华</span><span
+                            data-reactid=".179uv29cnds.0.1.1.0.1.0.0.0.0.0.1.1">&nbsp;</span></label></a></div>
+                    <noscript data-reactid=".179uv29cnds.0.1.1.0.1.0.0.0.2"></noscript>
+                    <noscript data-reactid=".179uv29cnds.0.1.1.0.1.0.0.0.3"></noscript>
+                    <noscript data-reactid=".179uv29cnds.0.1.1.0.1.0.0.0.5"></noscript>
+                </div>
+                <div class="comment-btns-actbar" style="left:-121px;" data-reactid=".179uv29cnds.0.1.1.0.1.0.0.1">
+                    <div class="comment-btns-actbar comment-btns-big " data-reactid=".179uv29cnds.0.1.1.0.1.0.0.1.0"><a
+                            href="javascript:void(0);" data-icon="share" class="actbar-btn actbar-btn-shares" title="分享"
+                            data-reactid=".179uv29cnds.0.1.1.0.1.0.0.1.0.0"><i class="icon-small icon-small-shares"
+                                                                               data-reactid=".179uv29cnds.0.1.1.0.1.0.0.1.0.0.0"></i><label
+                            data-reactid=".179uv29cnds.0.1.1.0.1.0.0.1.0.0.1"><span
+                            data-reactid=".179uv29cnds.0.1.1.0.1.0.0.1.0.0.1.0">分享</span><span
+                            data-reactid=".179uv29cnds.0.1.1.0.1.0.0.1.0.0.1.1">&nbsp;</span><em class="number_shares"
+                                                                                                 data-reactid=".179uv29cnds.0.1.1.0.1.0.0.1.0.0.1.2"><span
+                            data-reactid=".179uv29cnds.0.1.1.0.1.0.0.1.0.0.1.2.0">(</span><span
+                            data-reactid=".179uv29cnds.0.1.1.0.1.0.0.1.0.0.1.2.1">0</span><span
+                            data-reactid=".179uv29cnds.0.1.1.0.1.0.0.1.0.0.1.2.2">)</span></em></label></a></div>
+                    <noscript data-reactid=".179uv29cnds.0.1.1.0.1.0.0.1.2"></noscript>
+                    <noscript data-reactid=".179uv29cnds.0.1.1.0.1.0.0.1.3"></noscript>
+                    <noscript data-reactid=".179uv29cnds.0.1.1.0.1.0.0.1.5"></noscript>
+                </div>
+                <div class="comment-btns-actbar" style="left:-121px;" data-reactid=".179uv29cnds.0.1.1.0.1.0.0.2">
+                    <div class="comment-btns-actbar comment-btns-big " data-reactid=".179uv29cnds.0.1.1.0.1.0.0.2.0"><a
+                            href="javascript:void(0);" data-icon="fav" class="actbar-btn actbar-btn-fav_hover"
+                            title="收藏" data-reactid=".179uv29cnds.0.1.1.0.1.0.0.2.0.0"><i
+                            class="icon-small icon-small-fav_hover"
+                            data-reactid=".179uv29cnds.0.1.1.0.1.0.0.2.0.0.0"></i><label
+                            data-reactid=".179uv29cnds.0.1.1.0.1.0.0.2.0.0.1"><span
+                            data-reactid=".179uv29cnds.0.1.1.0.1.0.0.2.0.0.1.0">收藏</span><span
+                            data-reactid=".179uv29cnds.0.1.1.0.1.0.0.2.0.0.1.1">&nbsp;</span></label></a></div>
+                    <noscript data-reactid=".179uv29cnds.0.1.1.0.1.0.0.2.2"></noscript>
+                    <noscript data-reactid=".179uv29cnds.0.1.1.0.1.0.0.2.3"></noscript>
+                    <noscript data-reactid=".179uv29cnds.0.1.1.0.1.0.0.2.5"></noscript>
+                </div>
+                <div class="comment-btns-actbar" style="left:-121px;" data-reactid=".179uv29cnds.0.1.1.0.1.0.0.3">
+                    <div class="comment-btns-actbar comment-btns-big " data-reactid=".179uv29cnds.0.1.1.0.1.0.0.3.0"><a
+                            href="javascript:void(0);" data-icon="dig" class="actbar-btn actbar-btn-likes" title="赞"
+                            data-reactid=".179uv29cnds.0.1.1.0.1.0.0.3.0.0"><i class="icon-small icon-small-likes"
+                                                                               data-reactid=".179uv29cnds.0.1.1.0.1.0.0.3.0.0.0"></i><label
+                            data-reactid=".179uv29cnds.0.1.1.0.1.0.0.3.0.0.1"><span
+                            data-reactid=".179uv29cnds.0.1.1.0.1.0.0.3.0.0.1.0">赞</span><span
+                            data-reactid=".179uv29cnds.0.1.1.0.1.0.0.3.0.0.1.1">&nbsp;</span><em class="number_likes"
+                                                                                                 data-reactid=".179uv29cnds.0.1.1.0.1.0.0.3.0.0.1.2"><span
+                            data-reactid=".179uv29cnds.0.1.1.0.1.0.0.3.0.0.1.2.0">(</span><span
+                            data-reactid=".179uv29cnds.0.1.1.0.1.0.0.3.0.0.1.2.1">2</span><span
+                            data-reactid=".179uv29cnds.0.1.1.0.1.0.0.3.0.0.1.2.2">)</span></em></label></a></div>
+                    <noscript data-reactid=".179uv29cnds.0.1.1.0.1.0.0.3.2"></noscript>
+                    <noscript data-reactid=".179uv29cnds.0.1.1.0.1.0.0.3.3"></noscript>
+                    <noscript data-reactid=".179uv29cnds.0.1.1.0.1.0.0.3.5"></noscript>
+                </div>
+            </div>
+        </div>
+        <div class="comment-reply" data-reactid=".179uv29cnds.0.1.1.0.1.1">
+            <div class="comment-replyinput" data-reactid=".179uv29cnds.0.1.1.0.1.1.0">
+                <div data-reactid=".179uv29cnds.0.1.1.0.1.1.0.0">
+                    <div class="comment-input-container" data-reactid=".179uv29cnds.0.1.1.0.1.1.0.0.0">
+                        <div class="comment-textarea" data-reactid=".179uv29cnds.0.1.1.0.1.1.0.0.0.0">
+                            <div id="comment_pop" class="push-big fc" contenteditable="true"
+                                 data-reactid=".179uv29cnds.0.1.1.0.1.1.0.0.0.0.0">分享你的观点
+                            </div>
+                        </div>
+                        <div class="mt-big comment-tools" data-reactid=".179uv29cnds.0.1.1.0.1.1.0.0.0.1"><span
+                                data-reactid=".179uv29cnds.0.1.1.0.1.1.0.0.0.1.0"><span class="emotionImg emotions"
+                                                                                        style="display:inline-block;"
+                                                                                        data-reactid=".179uv29cnds.0.1.1.0.1.1.0.0.0.1.0.0"><i
+                                class="emotionImg icon-small icon-small-emotion"
+                                data-reactid=".179uv29cnds.0.1.1.0.1.1.0.0.0.1.0.0.0"></i><label
+                                class="emotions-face emotionImg" data-reactid=".179uv29cnds.0.1.1.0.1.1.0.0.0.1.0.0.1">添加表情</label></span><span
+                                style="display:none;" class=""
+                                data-reactid=".179uv29cnds.0.1.1.0.1.1.0.0.0.1.0.1"><label
+                                class="checkbox ant-checkbox-wrapper"
+                                data-reactid=".179uv29cnds.0.1.1.0.1.1.0.0.0.1.0.1.0"><span class="ant-checkbox"
+                                                                                            data-reactid=".179uv29cnds.0.1.1.0.1.1.0.0.0.1.0.1.0.0"><span
+                                class="ant-checkbox-inner"
+                                data-reactid=".179uv29cnds.0.1.1.0.1.1.0.0.0.1.0.1.0.0.0"></span><input name="toweibo"
+                                                                                                        type="checkbox"
+                                                                                                        class="ant-checkbox-input"
+                                                                                                        data-reactid=".179uv29cnds.0.1.1.0.1.1.0.0.0.1.0.1.0.0.1"></span><span
+                                data-reactid=".179uv29cnds.0.1.1.0.1.1.0.0.0.1.0.1.0.1">同时发到我的微博</span></label></span></span>
+                            <button id="push_btn" type="button" class="ant-btn comment-pushbtn"
+                                    data-reactid=".179uv29cnds.0.1.1.0.1.1.0.0.0.1.2"><span
+                                    data-reactid=".179uv29cnds.0.1.1.0.1.1.0.0.0.1.2.0">发表评论</span></button>
+                            <span class="font-tips hw-right" data-reactid=".179uv29cnds.0.1.1.0.1.1.0.0.0.1.3"></span>
+                        </div>
+                        <noscript data-reactid=".179uv29cnds.0.1.1.0.1.1.0.0.0.2"></noscript>
+                    </div>
+                </div>
+            </div>
+            <div class="comment-replylist" data-reactid=".179uv29cnds.0.1.1.0.1.1.1">
+                <div class="comment-list-container" id="comment_container" style="width:100%;"
+                     data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0">
+                    <div class="comment-header" style="display:block;" data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.0"><a
+                            id="headerAnchor" class="order-date" data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.0.0"><span
+                            data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.0.0.0">按回复时间</span><i
+                            class="icon-small icon-small-asc-on" data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.0.0.1"></i></a>
+                        <p class="comment-total" data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.0.1"><span
+                                data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.0.1.0">评论列表</span><span
+                                data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.0.1.1"><span
+                                data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.0.1.1.0">(</span><font
+                                data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.0.1.1.1">3</font><span
+                                data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.0.1.1.2">)</span></span></p></div>
+                    <ul id="comment_ul" data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1">
+                        <li id="li_5053395" data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0">
+                            <div class="user-info" data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.0">
+                                <div class="headpic-size" data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.0.0">
+                                    <div class="hi-blog-userCard"
+                                         data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.0.0.0">
+                                        <div class="user-card-container"
+                                             data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.0.0.0.0"><img
+                                                src="http://w3.huawei.com/w3lab/rest/yellowpage/face/00424457/120"
+                                                class="user-tips-img"
+                                                data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.0.0.0.0.0">
+                                            <div class="username-comun"
+                                                 data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.0.0.0.0.1"><p
+                                                    class="header-label"
+                                                    data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.0.0.0.0.1.0">
+                                                <a target="_blank" href="/hi/space/1188599"
+                                                   data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.0.0.0.0.1.0.0">陈梦川</a>
+                                            </p>
+                                                <p class="user-card-level"
+                                                   data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.0.0.0.0.1.1">
+                                                    <span class="user-card-level-text" title="等级"
+                                                          data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.0.0.0.0.1.1.0">等级</span><em
+                                                        class="icon-level icon-level-Lv1" title="当前贡献:23 还剩77贡献升级"
+                                                        data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.0.0.0.0.1.1.1"></em>
+                                                </p></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="comment-content" data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1">
+                                <div class="content-pushinfo"
+                                     data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1.0"><span
+                                        class="content-cTime"
+                                        data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1.0.0"><span
+                                        data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1.0.0.0">发表于 2017-07-31 18:48 </span></span><span
+                                        class="content-floor"
+                                        data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1.0.1">1楼</span></div>
+                                <div class="content-text" data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1.1">
+                                    <div class="comment-main"
+                                         data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1.1.0">
+                                        <div id="comment_blog_5053395" class="comment-row"
+                                             data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1.1.0.0">
+                                            这个我也背过，都忘了，贼6。感谢分享
+                                        </div>
+                                    </div>
+                                    <div class="comment-meaus"
+                                         data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1.1.1"><a name="mainDig"
+                                                                                                          class="comment-cllink"
+                                                                                                          id="dig_5053395"
+                                                                                                          href="javascript:void(0)"
+                                                                                                          data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1.1.1.0"><span
+                                            id="dig_title_5053395"
+                                            data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1.1.1.0.0">赞</span><span
+                                            data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1.1.1.0.1">(</span><font
+                                            id="dig_count_5053395"
+                                            data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1.1.1.0.2">0</font><span
+                                            data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1.1.1.0.3">)</span></a><a
+                                            name="mainReply" class="comment-cllink" href="javascript:void(0)"
+                                            data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1.1.1.1"><span
+                                            data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1.1.1.1.0">回复</span><span
+                                            data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1.1.1.1.1">(</span><font
+                                            data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1.1.1.1.2">1</font><span
+                                            data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1.1.1.1.3">)</span></a><span
+                                            class="arw arw-top" id="arw_5053395"
+                                            data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1.1.1.2"></span>
+                                    </div>
+                                    <div class="comment-comreplay" id="comreplay_5053395" style="display:block;"
+                                         data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1.1.2">
+                                        <div class="replay-area"
+                                             data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1.1.2.0:$childs_0">
+                                            <dl data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1.1.2.0:$childs_0.0">
+                                                <dt data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1.1.2.0:$childs_0.0.0">
+                                                    <a target="_blank" href="http://3ms.huawei.com/hi/space/1195933"
+                                                       data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1.1.2.0:$childs_0.0.0.0">李壮</a><span
+                                                        class="replay-push"
+                                                        data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1.1.2.0:$childs_0.0.0.1"><span
+                                                        data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1.1.2.0:$childs_0.0.0.1.0"> </span><span
+                                                        data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1.1.2.0:$childs_0.0.0.1.1">回复于 2017-07-31 18:58</span></span>
+                                                </dt>
+                                                <dd data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1.1.2.0:$childs_0.0.1">
+                                                    <div class="comment-main"
+                                                         data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1.1.2.0:$childs_0.0.1.0">
+                                                        <div id="comment_blog_5053403" class="comment-row"
+                                                             data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1.1.2.0:$childs_0.0.1.0.0">
+                                                            贼6~<img classname="comment_img"
+                                                                    src="http://3ms.huawei.com/km/static/blog/images/emoticons/default/51.gif">
+                                                        </div>
+                                                    </div>
+                                                    <p class="replay-meaus"
+                                                       data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1.1.2.0:$childs_0.0.1.1">
+                                                        <a name="reDig" class="comment-cllink" id="dig_5053403"
+                                                           href="javascript:void(0)"
+                                                           data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1.1.2.0:$childs_0.0.1.1.0"><span
+                                                                id="dig_title_5053403"
+                                                                data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1.1.2.0:$childs_0.0.1.1.0.0">赞</span><span
+                                                                data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1.1.2.0:$childs_0.0.1.1.0.1">(</span><font
+                                                                id="dig_count_5053403"
+                                                                data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1.1.2.0:$childs_0.0.1.1.0.2">0</font><span
+                                                                data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1.1.2.0:$childs_0.0.1.1.0.3">)</span></a><a
+                                                            name="reReply" class="comment-cllink"
+                                                            href="javascript:void(0)"
+                                                            data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1.1.2.0:$childs_0.0.1.1.1">回复</a>
+                                                    </p></dd>
+                                            </dl>
+                                        </div>
+                                        <div class="comment-mine" style="display:block;"
+                                             data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1.1.2.1"><a
+                                                href="javascript:void(0)" class="comment-cllink askto-comment"
+                                                data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1.1.2.1.0">我也来说一句</a><a
+                                                href="javascript:void(0)" class="txtlink-link" id="more_5053395"
+                                                style="display:none;"
+                                                data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1.1.2.1.1"><i
+                                                class="icon-small icon-small-arrow-bottom"
+                                                data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1.1.2.1.1.0"></i><span
+                                                data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1.1.2.1.1.1">&nbsp;</span><span
+                                                data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1.1.2.1.1.2">查看更多回复</span></a>
+                                        </div>
+                                        <div class="comment-list-textarea hw-hidden" id="replay_5053395"
+                                             data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1.1.2.2">
+                                            <div data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1.1.2.2.0">
+                                                <div class="comment-input-container"
+                                                     data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1.1.2.2.0.0">
+                                                    <div class="comment-textarea"
+                                                         data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1.1.2.2.0.0.0">
+                                                        <div id="comment_5053395" class="push-big fc"
+                                                             contenteditable="true"
+                                                             data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1.1.2.2.0.0.0.0">
+                                                            分享你的观点
+                                                        </div>
+                                                    </div>
+                                                    <div class="mt-big comment-tools"
+                                                         data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1.1.2.2.0.0.1">
+                                                        <span data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1.1.2.2.0.0.1.0"><span
+                                                                class="emotionImg emotions"
+                                                                style="display:inline-block;"
+                                                                data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1.1.2.2.0.0.1.0.0"><i
+                                                                class="emotionImg icon-small icon-small-emotion"
+                                                                data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1.1.2.2.0.0.1.0.0.0"></i><label
+                                                                class="emotions-face emotionImg"
+                                                                data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1.1.2.2.0.0.1.0.0.1">添加表情</label></span><span
+                                                                style="display:none;" class=""
+                                                                data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1.1.2.2.0.0.1.0.1"><label
+                                                                class="checkbox ant-checkbox-wrapper"
+                                                                data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1.1.2.2.0.0.1.0.1.0"><span
+                                                                class="ant-checkbox"
+                                                                data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1.1.2.2.0.0.1.0.1.0.0"><span
+                                                                class="ant-checkbox-inner"
+                                                                data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1.1.2.2.0.0.1.0.1.0.0.0"></span><input
+                                                                name="toweibo" type="checkbox"
+                                                                class="ant-checkbox-input"
+                                                                data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1.1.2.2.0.0.1.0.1.0.0.1"></span><span
+                                                                data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1.1.2.2.0.0.1.0.1.0.1">同时发到我的微博</span></label></span></span>
+                                                        <button type="button"
+                                                                class="ant-btn ant-btn-ghost ant-btn-lg push-cancel"
+                                                                data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1.1.2.2.0.0.1.1">
+                                                            <span data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1.1.2.2.0.0.1.1.0">取 消</span>
+                                                        </button>
+                                                        <button id="push_btn" type="button" class="ant-btn replay-push"
+                                                                data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1.1.2.2.0.0.1.2">
+                                                            <span data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1.1.2.2.0.0.1.2.0">回 复</span>
+                                                        </button>
+                                                        <span class="font-tips hw-right"
+                                                              data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1.1.2.2.0.0.1.3"></span>
+                                                    </div>
+                                                    <noscript
+                                                            data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.1.1.2.2.0.0.2"></noscript>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hw-bc" data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_0.2"></div>
+                        </li>
+                        <li id="li_5485343" data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_1">
+                            <div class="user-info" data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_1.0">
+                                <div class="headpic-size" data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_1.0.0">
+                                    <div class="hi-blog-userCard"
+                                         data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_1.0.0.0">
+                                        <div class="user-card-container"
+                                             data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_1.0.0.0.0"><img
+                                                src="http://w3.huawei.com/w3lab/rest/yellowpage/face/WX559939/120"
+                                                class="user-tips-img"
+                                                data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_1.0.0.0.0.0">
+                                            <div class="username-comun"
+                                                 data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_1.0.0.0.0.1"><p
+                                                    class="header-label"
+                                                    data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_1.0.0.0.0.1.0">
+                                                <a target="_blank" href="/hi/space/1317191"
+                                                   data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_1.0.0.0.0.1.0.0">杨蓓蓓</a>
+                                            </p>
+                                                <p class="user-card-level"
+                                                   data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_1.0.0.0.0.1.1">
+                                                    <span class="user-card-level-text" title="等级"
+                                                          data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_1.0.0.0.0.1.1.0">等级</span><em
+                                                        class="icon-level icon-level-Lv1" title="当前贡献:1 还剩99贡献升级"
+                                                        data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_1.0.0.0.0.1.1.1"></em>
+                                                </p></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="comment-content" data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_1.1">
+                                <div class="content-pushinfo"
+                                     data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_1.1.0"><span
+                                        class="content-cTime"
+                                        data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_1.1.0.0"><span
+                                        data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_1.1.0.0.0">发表于 2018-05-18 11:22 </span></span><span
+                                        class="content-floor"
+                                        data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_1.1.0.1">2楼</span></div>
+                                <div class="content-text" data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_1.1.1">
+                                    <div class="comment-main"
+                                         data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_1.1.1.0">
+                                        <div id="comment_blog_5485343" class="comment-row"
+                                             data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_1.1.1.0.0">非常好，有用
+                                        </div>
+                                    </div>
+                                    <div class="comment-meaus"
+                                         data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_1.1.1.1"><a name="mainDig"
+                                                                                                          class="comment-cllink"
+                                                                                                          id="dig_5485343"
+                                                                                                          href="javascript:void(0)"
+                                                                                                          data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_1.1.1.1.0"><span
+                                            id="dig_title_5485343"
+                                            data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_1.1.1.1.0.0">赞</span><span
+                                            data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_1.1.1.1.0.1">(</span><font
+                                            id="dig_count_5485343"
+                                            data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_1.1.1.1.0.2">0</font><span
+                                            data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_1.1.1.1.0.3">)</span></a><a
+                                            name="mainReply" class="comment-cllink" href="javascript:void(0)"
+                                            data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_1.1.1.1.1"><span
+                                            data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_1.1.1.1.1.0">回复</span><span
+                                            data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_1.1.1.1.1.1">(</span><font
+                                            data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_1.1.1.1.1.2">0</font><span
+                                            data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_1.1.1.1.1.3">)</span></a>
+                                    </div>
+                                    <div class="comment-comreplay" id="comreplay_5485343" style="display:block;"
+                                         data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_1.1.1.2">
+                                        <div class="comment-mine" style="display:none;"
+                                             data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_1.1.1.2.1"><a
+                                                href="javascript:void(0)" class="comment-cllink askto-comment"
+                                                data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_1.1.1.2.1.0">我也来说一句</a><a
+                                                href="javascript:void(0)" class="txtlink-link" id="more_5485343"
+                                                style="display:none;"
+                                                data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_1.1.1.2.1.1"><i
+                                                class="icon-small icon-small-arrow-bottom"
+                                                data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_1.1.1.2.1.1.0"></i><span
+                                                data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_1.1.1.2.1.1.1">&nbsp;</span><span
+                                                data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_1.1.1.2.1.1.2">查看更多回复</span></a>
+                                        </div>
+                                        <div class="comment-list-textarea hw-hidden" id="replay_5485343"
+                                             data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_1.1.1.2.2">
+                                            <div data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_1.1.1.2.2.0">
+                                                <div class="comment-input-container"
+                                                     data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_1.1.1.2.2.0.0">
+                                                    <div class="comment-textarea"
+                                                         data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_1.1.1.2.2.0.0.0">
+                                                        <div id="comment_5485343" class="push-big fc"
+                                                             contenteditable="true"
+                                                             data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_1.1.1.2.2.0.0.0.0">
+                                                            分享你的观点
+                                                        </div>
+                                                    </div>
+                                                    <div class="mt-big comment-tools"
+                                                         data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_1.1.1.2.2.0.0.1">
+                                                        <span data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_1.1.1.2.2.0.0.1.0"><span
+                                                                class="emotionImg emotions"
+                                                                style="display:inline-block;"
+                                                                data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_1.1.1.2.2.0.0.1.0.0"><i
+                                                                class="emotionImg icon-small icon-small-emotion"
+                                                                data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_1.1.1.2.2.0.0.1.0.0.0"></i><label
+                                                                class="emotions-face emotionImg"
+                                                                data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_1.1.1.2.2.0.0.1.0.0.1">添加表情</label></span><span
+                                                                style="display:none;" class=""
+                                                                data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_1.1.1.2.2.0.0.1.0.1"><label
+                                                                class="checkbox ant-checkbox-wrapper"
+                                                                data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_1.1.1.2.2.0.0.1.0.1.0"><span
+                                                                class="ant-checkbox"
+                                                                data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_1.1.1.2.2.0.0.1.0.1.0.0"><span
+                                                                class="ant-checkbox-inner"
+                                                                data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_1.1.1.2.2.0.0.1.0.1.0.0.0"></span><input
+                                                                name="toweibo" type="checkbox"
+                                                                class="ant-checkbox-input"
+                                                                data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_1.1.1.2.2.0.0.1.0.1.0.0.1"></span><span
+                                                                data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_1.1.1.2.2.0.0.1.0.1.0.1">同时发到我的微博</span></label></span></span>
+                                                        <button type="button"
+                                                                class="ant-btn ant-btn-ghost ant-btn-lg push-cancel"
+                                                                data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_1.1.1.2.2.0.0.1.1">
+                                                            <span data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_1.1.1.2.2.0.0.1.1.0">取 消</span>
+                                                        </button>
+                                                        <button id="push_btn" type="button" class="ant-btn replay-push"
+                                                                data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_1.1.1.2.2.0.0.1.2">
+                                                            <span data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_1.1.1.2.2.0.0.1.2.0">回 复</span>
+                                                        </button>
+                                                        <span class="font-tips hw-right"
+                                                              data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_1.1.1.2.2.0.0.1.3"></span>
+                                                    </div>
+                                                    <noscript
+                                                            data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_1.1.1.2.2.0.0.2"></noscript>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hw-bc" data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.1.$parent_1.2"></div>
+                        </li>
+                    </ul>
+                    <noscript data-reactid=".179uv29cnds.0.1.1.0.1.1.1.0.3"></noscript>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
+</body>
+</html>
